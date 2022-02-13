@@ -47,7 +47,7 @@ static const char *sc_version = "(undef)";
 #include <windows.h>
 #define PAGESIZE 0
 #else
-#include <sys/mman.h>
+//#include <sys/mman.h>
 #include <limits.h>
 #include <unistd.h>
 #ifndef PAGESIZE
@@ -919,7 +919,7 @@ void *sc_mem_secure_alloc(size_t len)
 #ifdef _WIN32
 	VirtualLock(p, len);
 #else
-	mlock(p, len);
+//	mlock(p, len);
 #endif
 
 	return p;
@@ -930,7 +930,7 @@ void sc_mem_secure_free(void *ptr, size_t len)
 #ifdef _WIN32
 	VirtualUnlock(ptr, len);
 #else
-	munlock(ptr, len);
+//	munlock(ptr, len);
 #endif
 	free(ptr);
 }

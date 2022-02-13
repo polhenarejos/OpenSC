@@ -83,7 +83,7 @@ int _sc_delete_reader(sc_context_t *ctx, sc_reader_t *reader)
 			reader->ops->release(reader);
 	free(reader->name);
 	free(reader->vendor);
-	list_delete(&ctx->readers, reader);
+	//list_delete(&ctx->readers, reader);
 	free(reader);
 	return SC_SUCCESS;
 }
@@ -94,75 +94,75 @@ struct _sc_driver_entry {
 };
 
 static const struct _sc_driver_entry internal_card_drivers[] = {
-	{ "cardos",	(void *(*)(void)) sc_get_cardos_driver },
-	{ "flex",	(void *(*)(void)) sc_get_cryptoflex_driver },
-	{ "cyberflex",	(void *(*)(void)) sc_get_cyberflex_driver },
-#ifdef ENABLE_OPENSSL
-	{ "gpk",	(void *(*)(void)) sc_get_gpk_driver },
-#endif
-	{ "gemsafeV1",	(void *(*)(void)) sc_get_gemsafeV1_driver },
-	{ "asepcos",	(void *(*)(void)) sc_get_asepcos_driver },
-	{ "starcos",	(void *(*)(void)) sc_get_starcos_driver },
-	{ "tcos",	(void *(*)(void)) sc_get_tcos_driver },
-#ifdef ENABLE_OPENSSL
-	{ "oberthur",	(void *(*)(void)) sc_get_oberthur_driver },
-	{ "authentic",	(void *(*)(void)) sc_get_authentic_driver },
-	{ "iasecc",	(void *(*)(void)) sc_get_iasecc_driver },
-#endif
-	{ "belpic",	(void *(*)(void)) sc_get_belpic_driver },
-	{ "incrypto34", (void *(*)(void)) sc_get_incrypto34_driver },
-	{ "akis",	(void *(*)(void)) sc_get_akis_driver },
-#ifdef ENABLE_OPENSSL
-	{ "entersafe",(void *(*)(void)) sc_get_entersafe_driver },
-#ifdef ENABLE_SM
-	{ "epass2003",(void *(*)(void)) sc_get_epass2003_driver },
-#endif
-#endif
-	{ "rutoken",	(void *(*)(void)) sc_get_rutoken_driver },
-	{ "rutoken_ecp",(void *(*)(void)) sc_get_rtecp_driver },
-	{ "myeid",      (void *(*)(void)) sc_get_myeid_driver },
-#if defined(ENABLE_OPENSSL) && defined(ENABLE_SM)
-	{ "dnie",       (void *(*)(void)) sc_get_dnie_driver },
-#endif
-	{ "masktech",	(void *(*)(void)) sc_get_masktech_driver },
-	{ "atrust-acos",(void *(*)(void)) sc_get_atrust_acos_driver },
-	{ "westcos",	(void *(*)(void)) sc_get_westcos_driver },
-	{ "esteid2018",	(void *(*)(void)) sc_get_esteid2018_driver },
-	{ "idprime",	(void *(*)(void)) sc_get_idprime_driver },
-#if defined(ENABLE_SM) && defined(ENABLE_OPENPACE)
-	{ "edo",        (void *(*)(void)) sc_get_edo_driver },
-#endif
-
-/* Here should be placed drivers that need some APDU transactions in the
- * driver's `match_card()` function. */
-	{ "coolkey",	(void *(*)(void)) sc_get_coolkey_driver },
-	/* MUSCLE card applet returns 9000 on whatever AID is selected, see
-	 * https://github.com/JavaCardOS/MuscleCard-Applet/blob/master/musclecard/src/com/musclecard/CardEdge/CardEdge.java#L326
-	 * put the muscle driver first to cope with this bug. */
-	{ "muscle",	(void *(*)(void)) sc_get_muscle_driver },
-	{ "sc-hsm",	(void *(*)(void)) sc_get_sc_hsm_driver },
-	{ "mcrd",	(void *(*)(void)) sc_get_mcrd_driver },
-	{ "setcos",	(void *(*)(void)) sc_get_setcos_driver },
-	{ "PIV-II",	(void *(*)(void)) sc_get_piv_driver },
-	{ "cac",	(void *(*)(void)) sc_get_cac_driver },
-	{ "itacns",	(void *(*)(void)) sc_get_itacns_driver },
-	{ "isoApplet",	(void *(*)(void)) sc_get_isoApplet_driver },
-#ifdef ENABLE_ZLIB
-	{ "gids",	(void *(*)(void)) sc_get_gids_driver },
-#endif
-	{ "openpgp",	(void *(*)(void)) sc_get_openpgp_driver },
-	{ "jpki",	(void *(*)(void)) sc_get_jpki_driver },
-	{ "npa",	(void *(*)(void)) sc_get_npa_driver },
-	{ "cac1",	(void *(*)(void)) sc_get_cac1_driver },
-	/* The default driver should be last, as it handles all the
-	 * unrecognized cards. */
-	{ "default",	(void *(*)(void)) sc_get_default_driver },
+//	{ "cardos",	(void *(*)(void)) sc_get_cardos_driver },
+//	{ "flex",	(void *(*)(void)) sc_get_cryptoflex_driver },
+//	{ "cyberflex",	(void *(*)(void)) sc_get_cyberflex_driver },
+//#ifdef ENABLE_OPENSSL
+//	{ "gpk",	(void *(*)(void)) sc_get_gpk_driver },
+//#endif
+//	{ "gemsafeV1",	(void *(*)(void)) sc_get_gemsafeV1_driver },
+//	{ "asepcos",	(void *(*)(void)) sc_get_asepcos_driver },
+//	{ "starcos",	(void *(*)(void)) sc_get_starcos_driver },
+//	{ "tcos",	(void *(*)(void)) sc_get_tcos_driver },
+//#ifdef ENABLE_OPENSSL
+//	{ "oberthur",	(void *(*)(void)) sc_get_oberthur_driver },
+//	{ "authentic",	(void *(*)(void)) sc_get_authentic_driver },
+//	{ "iasecc",	(void *(*)(void)) sc_get_iasecc_driver },
+//#endif
+//	{ "belpic",	(void *(*)(void)) sc_get_belpic_driver },
+//	{ "incrypto34", (void *(*)(void)) sc_get_incrypto34_driver },
+//	{ "akis",	(void *(*)(void)) sc_get_akis_driver },
+//#ifdef ENABLE_OPENSSL
+//	{ "entersafe",(void *(*)(void)) sc_get_entersafe_driver },
+//#ifdef ENABLE_SM
+//	{ "epass2003",(void *(*)(void)) sc_get_epass2003_driver },
+//#endif
+//#endif
+//	{ "rutoken",	(void *(*)(void)) sc_get_rutoken_driver },
+//	{ "rutoken_ecp",(void *(*)(void)) sc_get_rtecp_driver },
+//	{ "myeid",      (void *(*)(void)) sc_get_myeid_driver },
+//#if defined(ENABLE_OPENSSL) && defined(ENABLE_SM)
+//	{ "dnie",       (void *(*)(void)) sc_get_dnie_driver },
+//#endif
+//	{ "masktech",	(void *(*)(void)) sc_get_masktech_driver },
+//	{ "atrust-acos",(void *(*)(void)) sc_get_atrust_acos_driver },
+//	{ "westcos",	(void *(*)(void)) sc_get_westcos_driver },
+//	{ "esteid2018",	(void *(*)(void)) sc_get_esteid2018_driver },
+//	{ "idprime",	(void *(*)(void)) sc_get_idprime_driver },
+//#if defined(ENABLE_SM) && defined(ENABLE_OPENPACE)
+//	{ "edo",        (void *(*)(void)) sc_get_edo_driver },
+//#endif
+//
+///* Here should be placed drivers that need some APDU transactions in the
+// * driver's `match_card()` function. */
+//	{ "coolkey",	(void *(*)(void)) sc_get_coolkey_driver },
+//	/* MUSCLE card applet returns 9000 on whatever AID is selected, see
+//	 * https://github.com/JavaCardOS/MuscleCard-Applet/blob/master/musclecard/src/com/musclecard/CardEdge/CardEdge.java#L326
+//	 * put the muscle driver first to cope with this bug. */
+//	{ "muscle",	(void *(*)(void)) sc_get_muscle_driver },
+//	{ "sc-hsm",	(void *(*)(void)) sc_get_sc_hsm_driver },
+//	{ "mcrd",	(void *(*)(void)) sc_get_mcrd_driver },
+//	{ "setcos",	(void *(*)(void)) sc_get_setcos_driver },
+//	{ "PIV-II",	(void *(*)(void)) sc_get_piv_driver },
+//	{ "cac",	(void *(*)(void)) sc_get_cac_driver },
+//	{ "itacns",	(void *(*)(void)) sc_get_itacns_driver },
+//	{ "isoApplet",	(void *(*)(void)) sc_get_isoApplet_driver },
+//#ifdef ENABLE_ZLIB
+//	{ "gids",	(void *(*)(void)) sc_get_gids_driver },
+//#endif
+//	{ "openpgp",	(void *(*)(void)) sc_get_openpgp_driver },
+//	{ "jpki",	(void *(*)(void)) sc_get_jpki_driver },
+//	{ "npa",	(void *(*)(void)) sc_get_npa_driver },
+//	{ "cac1",	(void *(*)(void)) sc_get_cac1_driver },
+//	/* The default driver should be last, as it handles all the
+//	 * unrecognized cards. */
+//	{ "default",	(void *(*)(void)) sc_get_default_driver },
 	{ NULL, NULL }
 };
 
 static const struct _sc_driver_entry old_card_drivers[] = {
-	{ "miocos",	(void *(*)(void)) sc_get_miocos_driver },
-	{ "jcop",	(void *(*)(void)) sc_get_jcop_driver },
+//	{ "miocos",	(void *(*)(void)) sc_get_miocos_driver },
+//	{ "jcop",	(void *(*)(void)) sc_get_jcop_driver },
 	{ NULL, NULL }
 };
 
@@ -734,8 +734,8 @@ static void process_config_file(sc_context_t *ctx, struct _sc_ctx_options *opts)
 	}
 	/* Above we add 2 blocks at most, but conf_blocks has 3 elements,
 	 * so at least one is NULL */
-	for (i = 0; ctx->conf_blocks[i]; i++)
-		load_parameters(ctx, ctx->conf_blocks[i], opts);
+//	for (i = 0; ctx->conf_blocks[i]; i++)
+//		load_parameters(ctx, ctx->conf_blocks[i], opts);
 }
 
 int sc_ctx_detect_readers(sc_context_t *ctx)
@@ -828,22 +828,23 @@ int sc_context_create(sc_context_t **ctx_out, const sc_context_param_t *parm)
 
 	ctx->flags = parm->flags;
 	set_defaults(ctx, &opts);
-
-	if (0 != list_init(&ctx->readers)) {
-		del_drvs(&opts);
-		sc_release_context(ctx);
-		return SC_ERROR_OUT_OF_MEMORY;
-	}
-	list_attributes_seeker(&ctx->readers, reader_list_seeker);
-	/* set thread context and create mutex object (if specified) */
-	if (parm->thread_ctx != NULL)
-		ctx->thread_ctx = parm->thread_ctx;
-	r = sc_mutex_create(ctx, &ctx->mutex);
-	if (r != SC_SUCCESS) {
-		del_drvs(&opts);
-		sc_release_context(ctx);
-		return r;
-	}
+//
+//	if (0 != list_init(&ctx->readers)) {
+//		del_drvs(&opts);
+//		sc_release_context(ctx);
+//		return SC_ERROR_OUT_OF_MEMORY;
+//	}
+//	list_attributes_seeker(&ctx->readers, reader_list_seeker);
+//
+//	/* set thread context and create mutex object (if specified) */
+//	if (parm->thread_ctx != NULL)
+//		ctx->thread_ctx = parm->thread_ctx;
+//	r = sc_mutex_create(ctx, &ctx->mutex);
+//	if (r != SC_SUCCESS) {
+//		del_drvs(&opts);
+//		sc_release_context(ctx);
+//		return r;
+//	}
 
 #if defined(ENABLE_OPENSSL) && defined(OPENSSL_SECURE_MALLOC_SIZE)
 	if (!CRYPTO_secure_malloc_initialized()) {
@@ -851,40 +852,40 @@ int sc_context_create(sc_context_t **ctx_out, const sc_context_param_t *parm)
 	}
 #endif
 
-	process_config_file(ctx, &opts);
+//	process_config_file(ctx, &opts);
 	sc_log(ctx, "==================================="); /* first thing in the log */
 	sc_log(ctx, "opensc version: %s", sc_get_version());
 
-#ifdef ENABLE_PCSC
-	ctx->reader_driver = sc_get_pcsc_driver();
-#elif defined(ENABLE_CRYPTOTOKENKIT)
-	ctx->reader_driver = sc_get_cryptotokenkit_driver();
-#elif defined(ENABLE_CTAPI)
-	ctx->reader_driver = sc_get_ctapi_driver();
-#elif defined(ENABLE_OPENCT)
-	ctx->reader_driver = sc_get_openct_driver();
-#endif
-
-	r = ctx->reader_driver->ops->init(ctx);
-	if (r != SC_SUCCESS)   {
-		del_drvs(&opts);
-		sc_release_context(ctx);
-		return r;
-	}
-
-	driver = getenv("OPENSC_DRIVER");
-	if (driver) {
-		scconf_list *list = NULL;
-		scconf_list_add(&list, driver);
-		set_drivers(&opts, list);
-		scconf_list_destroy(list);
-	}
-
-	load_card_drivers(ctx, &opts);
-	load_card_atrs(ctx);
-
-	del_drvs(&opts);
-	sc_ctx_detect_readers(ctx);
+//#ifdef ENABLE_PCSC
+//	ctx->reader_driver = sc_get_pcsc_driver();
+//#elif defined(ENABLE_CRYPTOTOKENKIT)
+//	ctx->reader_driver = sc_get_cryptotokenkit_driver();
+//#elif defined(ENABLE_CTAPI)
+//	ctx->reader_driver = sc_get_ctapi_driver();
+//#elif defined(ENABLE_OPENCT)
+//	ctx->reader_driver = sc_get_openct_driver();
+//#endif
+//
+//	r = ctx->reader_driver->ops->init(ctx);
+//	if (r != SC_SUCCESS)   {
+//		del_drvs(&opts);
+//		sc_release_context(ctx);
+//		return r;
+//	}
+//
+//	driver = getenv("OPENSC_DRIVER");
+//	if (driver) {
+//		scconf_list *list = NULL;
+//		scconf_list_add(&list, driver);
+//		set_drivers(&opts, list);
+//		scconf_list_destroy(list);
+//	}
+//
+//	load_card_drivers(ctx, &opts);
+//	load_card_atrs(ctx);
+//
+//	del_drvs(&opts);
+//	sc_ctx_detect_readers(ctx);
 	*ctx_out = ctx;
 
 	return SC_SUCCESS;
@@ -929,10 +930,10 @@ int sc_release_context(sc_context_t *ctx)
 		return SC_ERROR_INVALID_ARGUMENTS;
 	}
 	SC_FUNC_CALLED(ctx, SC_LOG_DEBUG_VERBOSE);
-	while (list_size(&ctx->readers)) {
-		sc_reader_t *rdr = (sc_reader_t *) list_get_at(&ctx->readers, 0);
-		_sc_delete_reader(ctx, rdr);
-	}
+//	while (list_size(&ctx->readers)) {
+//		sc_reader_t *rdr = (sc_reader_t *) list_get_at(&ctx->readers, 0);
+//		_sc_delete_reader(ctx, rdr);
+//	}
 
 	if (ctx->reader_driver->ops->finish != NULL)
 		ctx->reader_driver->ops->finish(ctx);
@@ -940,10 +941,10 @@ int sc_release_context(sc_context_t *ctx)
 	for (i = 0; ctx->card_drivers[i]; i++) {
 		struct sc_card_driver *drv = ctx->card_drivers[i];
 
-		if (drv->atr_map)
-			_sc_free_atr(ctx, drv);
-		if (drv->dll)
-			sc_dlclose(drv->dll);
+//		if (drv->atr_map)
+//			_sc_free_atr(ctx, drv);
+//		if (drv->dll)
+//			sc_dlclose(drv->dll);
 	}
 	if (ctx->preferred_language != NULL)
 		free(ctx->preferred_language);
@@ -954,7 +955,7 @@ int sc_release_context(sc_context_t *ctx)
 			return r;
 		}
 	}
-	if (ctx->conf != NULL)
+	/*if (ctx->conf != NULL)
 		scconf_free(ctx->conf);
 	if (ctx->debug_file && (ctx->debug_file != stdout && ctx->debug_file != stderr))
 		fclose(ctx->debug_file);
@@ -962,7 +963,7 @@ int sc_release_context(sc_context_t *ctx)
 		free(ctx->debug_filename);
 	if (ctx->app_name != NULL)
 		free(ctx->app_name);
-	list_destroy(&ctx->readers);
+	list_destroy(&ctx->readers);*/
 	sc_mem_clear(ctx, sizeof(*ctx));
 	free(ctx);
 	return SC_SUCCESS;

@@ -95,7 +95,7 @@ static void sc_do_log_va(sc_context_t *ctx, int level, const char *file, int lin
 #endif
 	if (ctx->debug_file == NULL)
 		return;
-
+/*
 #ifdef _WIN32
 	GetLocalTime(&st);
 	sc_color_fprintf(SC_COLOR_FG_GREEN|SC_COLOR_BOLD,
@@ -123,7 +123,7 @@ static void sc_do_log_va(sc_context_t *ctx, int level, const char *file, int lin
 			time_string,
 			(long)tv.tv_usec / 1000);
 #endif
-
+*/
 	sc_color_fprintf(SC_COLOR_FG_YELLOW,
 			ctx, ctx->debug_file,
 			" [");
@@ -183,7 +183,7 @@ static int is_a_tty(FILE *fp)
 				return GetFileType(h) == FILE_TYPE_CHAR;
 			}
 #else
-			return isatty(fd);
+			return 0;// isatty(fd);
 #endif
 		}
 	}
