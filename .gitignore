@@ -125,3 +125,4 @@ src/tests/unittests/compression
 src/tests/unittests/simpletlv
 
 version.m4.ci
+*.DS_Store
