@@ -78,9 +78,6 @@ static void sc_do_log_va(sc_context_t *ctx, int level, const char *file, int lin
 #ifdef _WIN32
 	SYSTEMTIME st;
 #else
-	struct tm *tm;
-	struct timeval tv;
-	char time_string[40];
 #endif
 
 	if (!ctx || ctx->debug < level)
